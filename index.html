@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brisavelo | Messaging assistants for small businesses</title>
+<meta name="description" content="Brisavelo builds messaging assistants for small businesses in The Bahamas, starting with WhatsApp. Customers get an instant reply; you get a clean list of what to deliver.">
+<meta name="theme-color" content="#0C2B3A">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230C2B3A'/%3E%3Cpath d='M30 10v32H14z' fill='%232BB3B1'/%3E%3Cpath d='M34 18v24h16z' fill='%23F1F8F7'/%3E%3Cpath d='M8 48c6 0 6 4 12 4s6-4 12-4 6 4 12 4 6-4 12-4' fill='none' stroke='%232BB3B1' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#0C2B3A; --teal:#0F7C7A; --aqua:#2BB3B1; --foam:#F1F8F7; --line:#CFE3E1; --muted:#4A6270; --white:#fff;
+  --serif:Charter,"Bitstream Charter","Sitka Text",Cambria,Georgia,serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--white);line-height:1.6;font-size:17px}
+img,svg{max-width:100%}
+a{color:var(--teal)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:#fff;padding:8px 14px;border-radius:6px;z-index:10}
+.skip:focus{left:8px}
+:focus-visible{outline:3px solid var(--aqua);outline-offset:3px;border-radius:4px}
+
+header.top{background:var(--white);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px;gap:16px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-family:var(--serif);font-size:1.45rem;font-weight:700;letter-spacing:.01em}
+nav ul{list-style:none;margin:0;padding:0;display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+nav a{text-decoration:none;color:var(--ink);font-size:.95rem}
+nav a:hover{color:var(--teal)}
+nav a.pill{background:var(--ink);color:#fff;padding:8px 16px;border-radius:999px}
+nav a.pill:hover{background:var(--teal);color:#fff}
+
+.hero{background:var(--foam);padding:72px 0 56px}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+h1{font-family:var(--serif);font-size:clamp(2rem,4.6vw,3.2rem);line-height:1.12;margin:0 0 20px;letter-spacing:-.01em}
+.lede{font-size:1.2rem;color:var(--muted);max-width:34em;margin:0 0 28px}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 24px;border-radius:999px;text-decoration:none;font-weight:600;border:2px solid var(--ink)}
+.btn.primary{background:var(--ink);color:#fff}
+.btn.primary:hover{background:var(--teal);border-color:var(--teal)}
+.btn.ghost{color:var(--ink);background:transparent}
+.btn.ghost:hover{background:var(--ink);color:#fff}
+
+.phone{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:16px;box-shadow:0 18px 40px rgba(12,43,58,.12);max-width:380px;justify-self:end;width:100%}
+.phone .bar{font-size:.8rem;color:var(--muted);padding:2px 4px 12px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.msg{max-width:84%;padding:9px 13px;border-radius:14px;margin:0 0 9px;font-size:.93rem;line-height:1.45;opacity:0;transform:translateY(8px);animation:rise .5s ease forwards}
+.msg.in{background:var(--foam);border:1px solid var(--line);border-top-left-radius:4px}
+.msg.out{background:#D6F1EE;margin-left:auto;border-top-right-radius:4px}
+.msg:nth-of-type(1){animation-delay:.3s}.msg:nth-of-type(2){animation-delay:1.3s}.msg:nth-of-type(3){animation-delay:2.4s}.msg:nth-of-type(4){animation-delay:3.5s}
+@keyframes rise{to{opacity:1;transform:none}}
+.phone .note{font-size:.75rem;color:var(--muted);margin:10px 4px 0;font-style:italic}
+
+.wave{display:block;width:100%;height:60px;background:var(--foam)}
+section{padding:72px 0}
+h2{font-family:var(--serif);font-size:clamp(1.6rem,3.2vw,2.2rem);margin:0 0 12px;line-height:1.2}
+.sub{color:var(--muted);max-width:40em;margin:0 0 36px}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px}
+.card{border:1px solid var(--line);border-radius:14px;padding:22px;background:var(--white)}
+.card h3{margin:0 0 6px;font-size:1.08rem}
+.card p{margin:0;color:var(--muted);font-size:.97rem}
+#how{background:var(--foam)}
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+ol.steps li{counter-increment:s;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:22px 22px 22px 22px}
+ol.steps li::before{content:counter(s);display:inline-flex;width:32px;height:32px;border-radius:50%;background:var(--teal);color:#fff;font-weight:700;align-items:center;justify-content:center;margin-bottom:10px}
+ol.steps h3{margin:0 0 6px;font-size:1.08rem}
+ol.steps p{margin:0;color:var(--muted);font-size:.97rem}
+#contact{background:var(--ink);color:#fff}
+#contact h2{color:#fff}
+#contact p{color:#CFE3E1;max-width:38em}
+#contact a.btn{background:var(--aqua);border-color:var(--aqua);color:var(--ink)}
+#contact a.btn:hover{background:#fff;border-color:#fff}
+#contact a.mail{color:#fff}
+#privacy p{max-width:44em;color:var(--muted)}
+footer{background:#08202b;color:#9FB8C0;padding:28px 0;font-size:.88rem}
+footer p{margin:0 0 6px}
+
+@media (max-width:860px){
+  .hero .wrap{grid-template-columns:1fr}
+  .phone{justify-self:start}
+  .hero{padding:48px 0 40px}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .wrap{padding:0 18px}
+  section{padding:52px 0}
+  nav ul{gap:14px}
+  .btn{width:100%;text-align:center}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .msg{animation:none;opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#" aria-label="Brisavelo home">
+      <svg width="34" height="34" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#0C2B3A"/><path d="M30 10v32H14z" fill="#2BB3B1"/><path d="M34 18v24h16z" fill="#F1F8F7"/><path d="M8 48c6 0 6 4 12 4s6-4 12-4 6 4 12 4 6-4 12-4" fill="none" stroke="#2BB3B1" stroke-width="4" stroke-linecap="round"/></svg>
+      Brisavelo
+    </a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#what">What it does</a></li>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#privacy">Privacy</a></li>
+        <li><a class="pill" href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Customers message you at any hour. An assistant answers and takes the order.</h1>
+      <p class="lede">Brisavelo builds messaging assistants for small businesses, starting with WhatsApp. Customers get an instant reply. You get a clean list of what to deliver.</p>
+      <div class="btns">
+        <a class="btn primary" href="#contact">Write to Brisavelo</a>
+        <a class="btn ghost" href="#how">See how it works</a>
+      </div>
+    </div>
+    <div class="phone" role="img" aria-label="Illustration of a customer chatting with an ordering assistant">
+      <div class="bar">Example chat</div>
+      <p class="msg in">Hi, can I get 4 refills sent over?</p>
+      <p class="msg out">Of course. Is that for your usual address? And will you pay cash or with coupons?</p>
+      <p class="msg in">Same address. Coupons.</p>
+      <p class="msg out">Got it: 4 refills, coupons, delivered on the next delivery day. Shall I confirm?</p>
+      <p class="note">An illustration. Not a real customer or business.</p>
+    </div>
+  </div>
+</div>
+<svg class="wave" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0h1200v20C1100 50 1000 50 900 25S700 -5 600 20 400 55 300 30 100 -5 0 25z" fill="#F1F8F7"/></svg>
+
+<section id="what">
+  <div class="wrap">
+    <h2>What an assistant does</h2>
+    <p class="sub">It handles the repetitive messages so you can get on with running the business.</p>
+    <div class="features">
+      <div class="card"><h3>Takes orders the way you do</h3><p>It asks the same questions you would, checks the details back with the customer, and only records an order once they say yes.</p></div>
+      <div class="card"><h3>Answers from your own information</h3><p>Prices, delivery days, minimums and payment options come from your business, not from guesswork. If it does not know, it says so and passes the question to you.</p></div>
+      <div class="card"><h3>Recognizes regular customers</h3><p>Returning customers are greeted by name and asked to confirm their address and payment method, never assumed.</p></div>
+      <div class="card"><h3>Handles changes</h3><p>Customers can cancel, reschedule or change a pending order by message, and the list updates.</p></div>
+      <div class="card"><h3>Gives your driver a clean list</h3><p>Each day's orders are collected into one list, on a phone screen or as a printable page.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <h2>How it works</h2>
+    <p class="sub">A small, careful build for each business.</p>
+    <ol class="steps">
+      <li><h3>We learn how your business runs</h3><p>Products, prices, delivery days, how you take payment, and how you like to talk to customers.</p></li>
+      <li><h3>We build and test it</h3><p>We run real conversations, including awkward ones, and check the records, not just the replies.</p></li>
+      <li><h3>You switch it on and stay in charge</h3><p>You can see every order, step in at any time, and change how it behaves.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <h2>Tell us about your business</h2>
+    <p>Describe what you sell and how customers reach you today. We will reply with an honest view of whether an assistant would help.</p>
+    <p><a class="btn" href="mailto:nomad90009@gmail.com">Email Brisavelo</a></p>
+    <p>Or write to <a class="mail" href="mailto:nomad90009@gmail.com">nomad90009@gmail.com</a>.</p>
+    <p>Brisavelo<br>Queen's Highway, New Bight<br>Cat Island, Bahamas</p>
+  </div>
+</section>
+
+<section id="privacy">
+  <div class="wrap">
+    <h2>Privacy</h2>
+    <p>When a customer messages a business that uses a Brisavelo assistant, we handle their phone number, name, delivery directions and order details on that business's behalf, only to take and fulfil their order. We do not sell this information.</p>
+    <p>Messages travel through WhatsApp, which is operated by Meta, and an AI service is used to write replies. This website does not use cookies or analytics. To ask about or remove information held about you, write to us using the contact details above.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>&copy; 2026 Brisavelo. Queen's Highway, New Bight, Cat Island, Bahamas.</p>
+    <p>Brisavelo is not affiliated with or endorsed by WhatsApp or Meta.</p>
+  </div>
+</footer>
+</body>
+</html>
